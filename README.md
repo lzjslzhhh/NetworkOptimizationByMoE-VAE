@@ -1,3 +1,4 @@
+# 基于MOE与GAI的网络资源分配优化仿真实验
 #### <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">一、评估目标</font>
 <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">验证混合专家模型（MOE）与生成式AI（VAE）联合架构在以下方面的性能提升：</font>
 
