@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
+
 from config import Config
+
 
 def generate_slice_data(slice_type, num_samples):
     time = np.arange(num_samples)
@@ -11,6 +13,7 @@ def generate_slice_data(slice_type, num_samples):
     elif slice_type == 'web':
         demand = 15 + np.random.normal(0, 3, num_samples)
     return np.clip(demand, 0, None)
+
 
 if __name__ == "__main__":
     config = Config()

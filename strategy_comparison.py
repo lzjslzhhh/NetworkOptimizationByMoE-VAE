@@ -1,21 +1,19 @@
-# strategy_comparison.py
 import gymnasium
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import torch
-from MoE_VAE import MoE_VAE
 from gymnasium import spaces, Env
-from config import Config
 from stable_baselines3 import PPO
-from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.env_util import make_vec_env
 
-from train_rl import NetworkSliceEnv
+from MoE_VAE import MoE_VAE
+from config import Config
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 设置中文字体
 plt.rcParams['axes.unicode_minus'] = False
 from gymnasium.envs.registration import register
+
 # 注册与训练代码相同的环境
 register(
     id="NetworkSliceEnv-v0",
@@ -26,6 +24,8 @@ register(
     }
 )
 config = Config()
+
+
 class NetworkSliceEnv(Env):
     """自定义强化学习环境"""
 
@@ -99,6 +99,7 @@ class NetworkSliceEnv(Env):
         allocated = self.df[self.current_step - 1] / config.total_res
         return allocated / (allocated.sum() + 1e-8)
 
+
 class StrategyComparator:
     def __init__(self, test_data):
         self.config = Config()
@@ -106,7 +107,7 @@ class StrategyComparator:
         self.total_res = self.config.total_res
         self.window_size = self.config.window_size
 
-    def _load_rl_model(self,model_path):
+    def _load_rl_model(self, model_path):
         """加载RL模型（关键修改）"""
 
         # 创建与训练时相同的虚拟环境
@@ -237,9 +238,9 @@ class StrategyComparator:
 
             # 记录分配结果
             allocations.append({
-                'iot': alloc_ratio[0,0] * self.total_res,
-                'video': alloc_ratio[0,1] * self.total_res,
-                'web': alloc_ratio[0,2] * self.total_res
+                'iot': alloc_ratio[0, 0] * self.total_res,
+                'video': alloc_ratio[0, 1] * self.total_res,
+                'web': alloc_ratio[0, 2] * self.total_res
             })
 
         return allocations
@@ -338,6 +339,7 @@ class StrategyComparator:
         plt.savefig(f"{save_dir}/temporal_comparison.png")
         plt.close()
 
+
 # 生成动态需求示例
 def generate_test_data(num_samples=100, total_res=100):
     data = []
@@ -351,9 +353,10 @@ def generate_test_data(num_samples=100, total_res=100):
         })
     return data
 
+
 if __name__ == "__main__":
     # 生成测试数据（示例）
-    test_data = generate_test_data(24,100)
+    test_data = generate_test_data(24, 100)
 
     comparator = StrategyComparator(test_data)
 

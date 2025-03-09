@@ -1,17 +1,17 @@
-# evaluate.py
-import torch
+import matplotlib
 import numpy as np
-from MoE_VAE import MoE_VAE
+import torch
 from sklearn.manifold import TSNE
 
-from utils.data_loader import SliceDataset
+from MoE_VAE import MoE_VAE
 from config import Config
-import matplotlib
+from utils.data_loader import SliceDataset
+
 matplotlib.use('Agg')  # 非交互模式下使用Agg后端
 import matplotlib.pyplot as plt
+
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
-
 
 
 class ModelEvaluator:
@@ -25,7 +25,7 @@ class ModelEvaluator:
             moe_input_dim=self.config.window_size * 3,
             vae_input_dim=6
         ).to(self.config.device)
-        model.load_state_dict(torch.load(model_path, map_location=self.config.device,weights_only=True))
+        model.load_state_dict(torch.load(model_path, map_location=self.config.device, weights_only=True))
         model.eval()
         return model
 

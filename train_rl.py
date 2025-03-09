@@ -3,10 +3,10 @@ from gymnasium import spaces, Env
 import numpy as np
 import pandas as pd
 from stable_baselines3 import PPO
-from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env import DummyVecEnv
 from config import Config
 from gymnasium.envs.registration import register
+
 config = Config()
 
 register(
@@ -17,6 +17,7 @@ register(
         "window_size": 5
     }
 )
+
 
 class NetworkSliceEnv(Env):
     """自定义强化学习环境"""

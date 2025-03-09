@@ -45,6 +45,7 @@ def calculate_loss(alloc, real_demand, pred, mu, logvar, total_res):
 
     return loss, metrics
 
+
 def main():
     config = Config()
     writer = SummaryWriter(config.log_dir)
@@ -72,8 +73,8 @@ def main():
 
         for batch_idx, (hist_seq, real_demand) in enumerate(loader):
 
-            hist_seq = hist_seq.to(config.device,non_blocking=True)
-            real_demand = real_demand.to(config.device,non_blocking=True)
+            hist_seq = hist_seq.to(config.device, non_blocking=True)
+            real_demand = real_demand.to(config.device, non_blocking=True)
 
             prev_alloc = torch.zeros(hist_seq.size(0), 3).to(config.device)
             alloc, pred, mu, logvar = model(hist_seq, prev_alloc)
@@ -101,9 +102,9 @@ def main():
                 # 记录batch指标
             if batch_idx % 100 == 0:
                 writer.add_scalar('Train/Batch_Loss', loss.item(),
-                                      epoch * len(loader) + batch_idx)
+                                  epoch * len(loader) + batch_idx)
                 writer.add_scalars('Train/Batch_Metrics', batch_metrics,
-                                       epoch * len(loader) + batch_idx)
+                                   epoch * len(loader) + batch_idx)
 
         # 记录epoch指标
         avg_loss = total_loss / len(loader)
