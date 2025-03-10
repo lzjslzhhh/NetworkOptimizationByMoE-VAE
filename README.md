@@ -122,6 +122,47 @@ class MoE_VAE(nn.Module):
         # VAE生成分配
         alloc, mu, logvar = self.vae(vae_input)
         return alloc, pred_demand, mu, logvar
+
+        # if __name__ == "__main__":
+        #     # 加载多切片数据集
+        #     dataset = MultiSliceDataset(config.data_path, config.window_size)
+        #     loader = DataLoader(dataset, batch_size=config.batch_size, shuffle=True)
+        #
+        #     # 初始化模型
+        #     # 修改输入维度：window_size * num_slices
+        #     model = MultiSliceMoE(
+        #         num_experts=3,
+        #         input_dim=config.window_size * len(dataset.slice_columns),  # 5时间步×3切片
+        #         output_dim=len(dataset.slice_columns)  # 预测3个切片的需求
+        #     ).to(config.device)
+        #     criterion = nn.MSELoss()
+        #     optimizer = optim.Adam(model.parameters(), lr=config.learning_rate)
+        #     writer = SummaryWriter(log_dir='logs/moe')
+        #
+#     # 训练循环
+#     for epoch in range(config.moe_epochs):
+#         model.train()
+#         epoch_loss = 0.0
+#         for batch_x, batch_y in loader:
+#             batch_x = batch_x.to(config.device)
+#             batch_y = batch_y.to(config.device)
+#
+#             optimizer.zero_grad()
+#             outputs = model(batch_x)
+#             loss = criterion(outputs, batch_y)
+#             loss.backward()
+#             optimizer.step()
+#
+#             epoch_loss += loss.item()
+#
+#         avg_loss = epoch_loss / len(loader)
+#         writer.add_scalar('Loss/Train', avg_loss, epoch)
+#         print(f'Epoch {epoch + 1}/{config.moe_epochs} | Loss: {avg_loss:.4f}')
+#
+#     # 保存模型
+#     torch.save(model.state_dict(), config.moe_model_path)
+#     print(f"Model saved to {config.moe_model_path}")
+#     writer.close()
 ```
 
 ##### <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">3. MoEVAE训练监控（</font>`<font style="background-color:rgb(252, 252, 252);">train_MoE_VAE.py</font>`<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">）</font>
@@ -320,6 +361,7 @@ class Config:
 
 ##### <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">5. MoEVAE模型评估（</font>`<font style="background-color:rgb(252, 252, 252);">evaluate.py</font>`<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">）</font>
 ```python
+# evaluate.py
 import torch
 import numpy as np
 from MoE_VAE import MoE_VAE
@@ -733,15 +775,7 @@ reports/temporal_comparison.png
 ![](https://cdn.nlark.com/yuque/0/2025/png/43058383/1741529594204-0ba80a84-a8cb-4f6a-ad0d-958be3cab6c4.png)
 
 ##### <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">2. 分配策略对比</font>
-<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">reports/util_comparison.png</font>
-
-```plain
-# 生成对比图的代码片段
-methods = ['静态分配', '传统RL', 'MOE-VAE']
-utils = [0.82, 0.91, 0.95]
-plt.bar(methods, utils)
-plt.title("不同方法的资源利用率对比")
-```
+![](https://cdn.nlark.com/yuque/0/2025/png/43058383/1741576559012-fdc4d468-8a49-4fdb-b756-0a48700829f6.png)
 
 ##### <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">3. 潜在空间分析</font>
 <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">reports/latent_space.png</font>
