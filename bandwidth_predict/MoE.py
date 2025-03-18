@@ -90,7 +90,7 @@ def train_moe(model, train_loader, val_loader, epochs=200):
 
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=10, factor=0.5, min_lr=1e-6,
                                                            verbose=True)
-    writer = SummaryWriter('logs')
+    writer = SummaryWriter('../logs')
 
     best_val_loss = float('inf')
     early_stop = 15  # 提高耐心
