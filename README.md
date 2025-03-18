@@ -4,7 +4,7 @@
 ---
 
 ## **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">二、研究背景</font>**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"></font>
-    1. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">网络资源分配的挑战：</font>
++ <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">网络资源分配的挑战：</font>
     - 服务质量与能效平衡
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">随着我们步入第六代 （6G） 网络时代，无线通信和网络系统的动态正在发生重大转变，其复杂性不断增加，用户需求不断扩大[2]。</font>
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">在无线接入网络中，仍有待进一步解决以下问题：（1）不同业务的差异化QoS难以满足;（2） 网络资源利用率低;（3） 网络负载分配不均衡[6]。</font>
@@ -14,7 +14,7 @@
     - 动态性与不确定性
         * 5G 技术的重大进步将成为物联网 （IoT） 的巨大驱动力。此外，网络切片的概念为 IoT 应用程序提供了定制的可能性。如何在多场景下优化资源分配，成为我们面临的挑战[4]。
         * 随着电力需求的增加，配电网络不断扩大，导致网络结构更加复杂。因此，运行状态监控、故障告警和优化决策等挑战变得更加突出，对网络的智能化提出了更高的要求[7]。
-    2. 传统方法的局限性
++ 传统方法的局限性
     - 启发式算法
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">高维搜索空间下的收敛速度慢</font>
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">缺乏对动态环境的自适应能力</font>
@@ -25,7 +25,7 @@
         * 由于强化学习 （RL） 能够适应不断变化的网络条件并优化动态环境中的决策，因此非常适合解决 RAN 切片中的资源分配问题。近年来，DRL 已成为网络切片资源管理的重要方法，并显示出可喜的结果[5]。
         * 网络系统内对复杂优化的需求日益强烈，成为解锁 6G 广泛功能的关键。在各种技术创新中，深度强化学习 （DRL） 是一个关键的推动因素[3]。
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">由于用户需求的范围不断扩大，优化各种无线用户任务对网络系统构成了重大挑战。尽管深度强化学习 （DRL） 取得了进步，但需要为个人用户定制优化任务，这使得开发和应用大量 DRL 模型变得复杂，从而导致大量的计算资源和能源消耗，并可能导致不一致的结果[1]。</font>
-    3. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE与GAI的技术优势</font>
+    - <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE与GAI的技术优势</font>
     - <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MOE的核心创新点</font>
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">通过采用一系列 AI 模型作为专业专家，MoE 支持协作决策，从而显著减少对单个任务特定模型训练的需求。在这个框架内，由各种 DRL 策略训练的参与者网络可以充当专家模型，通过联合决策来处理新的和复杂的用户任务。门网络经过常规训练，可以管理和安排这些专家模型，确保最佳任务处理。然而，训练门网络也带来了一系列挑战，包括性能的不确定性以及专家数量和任务复杂性带来的潜在限制[1]。</font>
         * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE 是一种架构，它结合了专门的神经网络组件，称为专家，每个组件都为处理特定的子任务或数据子集而量身定制[11]。</font>
@@ -85,55 +85,61 @@
 
 ### **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">2. 实验步骤</font>**
 1. **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">数据集准备</font>**
-    1. 在[https://www.unb.ca/cic/datasets/ids-2017.html](https://www.unb.ca/cic/datasets/ids-2017.html)下载CIC-IDS-2017数据集
-    2. 采用Wednesday-workingHours.pcap_ISCX.csv进行训练
+    - 在[https://www.unb.ca/cic/datasets/ids-2017.html](https://www.unb.ca/cic/datasets/ids-2017.html)下载CIC-IDS-2017数据集
+    - 采用Wednesday-workingHours.pcap_ISCX.csv进行训练
 2. **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">数据预处理</font>**
-    1. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">从数据集中提取所需特征、包括流持续时间、带宽、包速率等、并对数据进行归一化从而[47-49]：</font>
-        1. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 防止梯度消失或爆炸    </font>
-        2. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 避免特征权重不均衡  </font>
-        3. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 加速收敛  </font>
-    2. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">按照特征进行场景类型标注、分为（TCP、UDP、Attack）三种场景</font>
+    - <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">从数据集中提取所需特征、包括流持续时间、带宽、包速率等、并对数据进行归一化从而[47-49]：</font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 防止梯度消失或爆炸    </font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 避免特征权重不均衡  </font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 加速收敛  </font>
+    - <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">按照特征进行场景类型标注、分为（TCP、UDP、Attack）三种场景</font>
 3. **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">创建MoEResourceDataset类用于训练：</font>**
-    1. 给各个专家各自提供所需特征和目标值、对应不同场景的特征特点和优化目标
+
+给各个专家各自提供所需特征和目标值、对应不同场景的特征特点和优化目标
+
 4. **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">基于GTCAN的虚拟网络流量生成器[50]</font>**
 
 该生成器根据不同的场景（“TCP”、“UDP”或“Attack”）生成符合需求的数据，并对其进行适当的修正和处理。生成的数据可以用于模拟网络流量、或用来补充训练集。
 
-5. **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE形成高维网络状态表征</font>**
+5. **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE优化网络带宽分配</font>**
 
-该模型基于 MoE（Mixture of Experts），用于网络流量带宽分配的预测。该模型结合了专家模型和动态门控网络（Dynamic Gating），通过一个由多个专家构成的网络，选择最合适的专家来进行预测，从而提高预测性能。  
+该模型基于 MoE（Mixture of Experts），用于网络流量带宽分配的预测。该模型结合了专家模型和动态门控网络（Dynamic Gating），通过不同专家（TCP、UDP、攻击专家）对不同类型流量的特征进行分析，模型根据门控网络的加权方式，最终计算出每个样本（流量或数据包）所需的带宽。
 
-    1. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">模型设计</font>
-        1. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">专家设计</font>
+    - <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">模型设计</font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">专家设计</font>
             + <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">其输入是各自所需的特征，输出维度为 1（预测带宽）  </font>
             + **Expert 1**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：处理 TCP 流量（如 HTTP、FTP）、基于带宽预测优化 QoS</font>
             + **Expert 2**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：处理 UDP 流量（如 VoIP、视频流）、优化丢包率，平衡时延</font>
             + **Expert 3**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：处理 异常/攻击流量降低带宽分配、进行流量过滤</font>
-        2. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">门控网络设计</font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">门控网络设计</font>
             + <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">它用于根据输入序列生成每个专家的权重。该网络的输出是一个（softmax）分布，表示不同专家模型的选择权重。</font>**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">  </font>**
-        3. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">组合专家模型输出</font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">组合专家模型输出</font>
             + <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE 模型的核心部分，包含多个专家和一个动态门控网络。根据输入，门控网络为每个专家生成一个权重，然后根据这些权重加权融合专家的输出。  </font>
-        4. <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">训练过程</font>
+        * <font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">训练过程</font>
             + **训练步骤**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：进行权重初始化[44]、使用 AdamW[42]优化器训练模型，每四个梯度步骤进行梯度裁剪[45]并更新一次参数。</font>
             + **验证步骤**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：计算验证集的平均损失，并根据损失情况调整学习率[43]。</font>
             + **早停机制**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：若验证损失在连续 </font>`<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">early_stop</font>`<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);"> 个 epoch 内没有改善，训练将提前停止[46]。</font>
 
 ### **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">3. 实验结果可视化</font>**
-    1. GAI
-        * 真实流量与CTGAN生成虚拟流量(已归一化)数值特征的描述统计：
+1. GAI
+    - 真实流量与CTGAN生成虚拟流量(已归一化)数值特征的描述统计：
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43058383/1742210274516-8719c4b2-464f-46b6-8842-d28a7916b17c.png)
 
-    2. MoE
-        1. 损失变化(tensorboard)
+2. MoE
+    - 损失变化(tensorboard)
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43058383/1742271473559-91cd07f4-a10b-45f7-9f99-ba19bd4ff991.png)
 
-        2. 真实值与预测值对比
+    - 真实值与预测值对比
 
 ![](https://cdn.nlark.com/yuque/0/2025/png/43058383/1742271328059-6fb23f74-7958-4a7d-b360-7d80f06ee49f.png)
 
-### **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">4. 实验结果可视化</font>**
+### **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">4. </font>**具体应用场景：
++ **网络优化**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：通过这种模型，网络管理员或自动化系统可以根据网络流量的特征动态调整带宽分配，优化网络资源使用，避免拥堵或浪费。</font>
++ **流量分类与控制**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：不同类型的流量可能需要不同的带宽分配。</font>`<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">MoE</font>`<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">模型通过学习流量的特征，能够帮助系统精确地分配适当的带宽。</font>
++ **攻击防护**<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">：在防止网络攻击（例如拒绝服务攻击）时，通过分析攻击流量的特征，模型可以预测攻击流量的带宽需求，从而采取相应的带宽控制措施进行过滤或限制。</font>
+
 ---
 
 ## **<font style="color:rgba(0, 0, 0, 0.9);background-color:rgb(252, 252, 252);">六、挑战与未来方向</font>**
