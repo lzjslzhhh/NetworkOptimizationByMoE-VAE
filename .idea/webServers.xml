@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="a222228e-6e61-4997-89b4-e255260bba33" name="AutoDl">
-        <fileTransfer accessType="SFTP" host="connect.westb.seetacloud.com" port="38738" sshConfigId="8f908356-26b6-4de5-aae2-af6f35f9380b" sshConfig="root@connect.westb.seetacloud.com:38738 password">
+        <fileTransfer rootFolder="/root" accessType="SFTP" host="connect.yza1.seetacloud.com" port="12995" sshConfigId="8f908356-26b6-4de5-aae2-af6f35f9380b" sshConfig="root@connect.yza1.seetacloud.com:12995 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
